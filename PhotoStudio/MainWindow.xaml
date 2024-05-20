@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhotoStudio"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+       
+        Title="MainWindow" Height="300" Width="300">
 
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Клиенты" Click="Client_Click"/>
+
+
+            <MenuItem Header="Фотографы" Click="Photographer_Click"/>
+            <MenuItem Header="Фотосессии" Click="Photosession_Click"/>
+
+        </Menu>
     </Grid>
 </Window>

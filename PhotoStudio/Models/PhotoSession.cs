@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhotoStudio.Models
 {
-    internal class PhotoSession
+    public class PhotoSession
     {
         public int Id { get; set; }
         public DateTime DateTime { get; set; }

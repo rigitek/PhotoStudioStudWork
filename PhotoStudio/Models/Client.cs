@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhotoStudio.Models
 {
-    internal class Client
+    public class Client
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -14,5 +14,7 @@ namespace PhotoStudio.Models
         public string PhoneNumber { get; set; }
 
         public List<PhotoSession> Sessions { get; set; }
+
+        public override string ToString() => $"{FirstName} {LastName} \n{PhoneNumber}";
     }
 }

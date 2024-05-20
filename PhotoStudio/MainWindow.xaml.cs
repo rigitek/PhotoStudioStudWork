@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using PhotoStudio.Windows;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,5 +21,29 @@ namespace PhotoStudio
         {
             InitializeComponent();
         }
+
+        private void Client_Click(object sender, RoutedEventArgs e)
+        {
+            ClientWindow clientWindow = new ClientWindow();
+            this.Close();
+            clientWindow.Show();
+        }
+
+
+
+        private void Photographer_Click(object sender, RoutedEventArgs e)
+        {
+            PhotographerWindow photographerWindow = new PhotographerWindow();
+            this.Close();
+            photographerWindow.Show();
+        }
+
+        private void Photosession_Click(object sender, RoutedEventArgs e)
+        {
+            PhotosessionWindow photosessionWindow = new PhotosessionWindow();
+            this.Close();
+            photosessionWindow.Show();
+        }
     }
+
 }

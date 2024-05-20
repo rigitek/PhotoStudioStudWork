@@ -1,0 +1,45 @@
+﻿<Window x:Class="PhotoStudio.Windows.PhotographerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoStudio.Windows"
+        mc:Ignorable="d"
+        Title="PhotographerWindow" Height="450" Width="500">
+    <Grid Margin="10">
+        <TextBlock Text="Фотографы" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+        <DockPanel Margin="0 0 0 35" LastChildFill="True" VerticalAlignment="Bottom">
+
+            <UniformGrid Columns="3">
+
+                <Button x:Name="AddButton"  Margin="0 0 5 0" Height="30" Content="Добавить" Click="Add_Click" />
+                <Button x:Name="EditButton"  Height="30" Content="Изменить" Click="Edit_Click" />
+                <Button x:Name="DeleteBurron"  Margin="5 0 0 0"  Height="30" Content="Удалить" Click="Delete_Click"  />
+            </UniformGrid>
+        </DockPanel>
+
+        <ListBox x:Name="photographersList" ItemsSource="{Binding}" Margin="0 40 0 70">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock FontSize="20" >
+                            <Run Text="Имя: " />
+                            <Run Text="{Binding FirstName}"  />
+                        </TextBlock>
+                        <TextBlock FontSize="20">
+                            <Run Text="Фамилия: " />
+                            <Run Text="{Binding LastName}" />
+                        </TextBlock>
+                        <TextBlock FontSize="20">
+                            <Run Text="Номер телефона: " />
+                            <Run Text="{Binding PhoneNumber}" />
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Content="Назад" Click="Back_Click" Height="30" VerticalAlignment="Bottom"/>
+
+    </Grid>
+</Window>
