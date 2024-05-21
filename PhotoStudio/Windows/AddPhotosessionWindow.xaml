@@ -17,7 +17,7 @@
             <TextBlock>Длительность (часов)</TextBlock>
             <TextBox Text="{Binding Time}" />
             <TextBlock>Тип фотосессии</TextBlock>
-            <ComboBox ItemsSource="{Binding}" SelectedItem="{Binding TypeOfPhotoSession}" />
+            <ComboBox x:Name="typeComboBox"  SelectedItem="{Binding TypeOfPhotoSession}"/>
             <TextBlock>Стоимость (рублей)</TextBlock>
             <TextBox Text="{Binding Price}" />
             <TextBlock>Клиент</TextBlock>

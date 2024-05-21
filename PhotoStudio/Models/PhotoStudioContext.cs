@@ -16,10 +16,11 @@ namespace PhotoStudio.Models
         public DbSet<Client> Clients { get; set; }
         public DbSet<Photographer> Photographers { get; set; }
         public DbSet<PhotoSession> PhotoSessions { get; set; }
+        public DbSet<TypeOfPhotoSession> TypeOfPhotoSessions { get; set; }
 
         public PhotoStudioContext()
         {
-           // Database.EnsureDeleted();
+           Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

@@ -15,6 +15,7 @@
 
             <MenuItem Header="Фотографы" Click="Photographer_Click"/>
             <MenuItem Header="Фотосессии" Click="Photosession_Click"/>
+            <MenuItem Header="Типы фотосессии" Click="TypeOfPhotoSession_Click"/>
 
         </Menu>
     </Grid>

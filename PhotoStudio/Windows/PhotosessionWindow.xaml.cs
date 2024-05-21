@@ -34,6 +34,7 @@ namespace PhotoStudio.Windows
             db.Clients.Load();
             db.Photographers.Load();
             db.PhotoSessions.Load();
+            db.TypeOfPhotoSessions.Load();
             DataContext = db.PhotoSessions.Local.ToObservableCollection();
 
 

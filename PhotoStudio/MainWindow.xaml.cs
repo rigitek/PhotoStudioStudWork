@@ -44,6 +44,14 @@ namespace PhotoStudio
             this.Close();
             photosessionWindow.Show();
         }
+
+       
+            private void TypeOfPhotoSession_Click(object sender, RoutedEventArgs e)
+        {
+            TypeOfPhotoSessionWindow typeOfPhotoSessionWindow = new TypeOfPhotoSessionWindow();
+            this.Close();
+            typeOfPhotoSessionWindow.Show();
+        }
     }
 
 }

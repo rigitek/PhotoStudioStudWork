@@ -33,6 +33,7 @@ namespace PhotoStudio.Windows
         {
             InitializeComponent();
             this.Loaded += AddPhotosessionWindow_Loaded;
+            typeComboBox.ItemsSource = Enum.GetValues(typeof(TypeOfPhotoSession));
         }
         public AddPhotosessionWindow(PhotoSession photoSession)
         {
