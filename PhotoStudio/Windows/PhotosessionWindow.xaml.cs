@@ -62,6 +62,7 @@ namespace PhotoStudio.Windows
                 DateAndTime = photoSession.DateAndTime,
                 Price = photoSession.Price,
                 Location = photoSession.Location,
+                Complete=photoSession.Complete,
                 Time = photoSession.Time,
                 TypeOfPhotoSession = photoSession.TypeOfPhotoSession,
                 Client = photoSession.Client,
@@ -79,6 +80,7 @@ namespace PhotoStudio.Windows
                     photoSession.Price = photoSession.Price;
                     photoSession.Location = photoSession.Location;
                     photoSession.Time = photoSession.Time;
+                    photoSession.Complete=photoSession.Complete;
                     photoSession.TypeOfPhotoSession = photoSession.TypeOfPhotoSession;
                     photoSession.Client = photoSession.Client;
                     photoSession.Photographer = photoSession.Photographer;
