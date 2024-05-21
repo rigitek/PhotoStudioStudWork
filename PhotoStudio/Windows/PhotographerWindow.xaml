@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="PhotographerWindow" Height="450" Width="500">
     <Grid Margin="10">
-        <TextBlock Text="Фотографы" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+        <TextBlock Text="Список фотографов" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
         <DockPanel Margin="0 0 0 35" LastChildFill="True" VerticalAlignment="Bottom">
 
             <UniformGrid Columns="3">

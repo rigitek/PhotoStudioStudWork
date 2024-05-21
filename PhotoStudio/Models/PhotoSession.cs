@@ -13,13 +13,7 @@ namespace PhotoStudio.Models
         public double Price { get; set; }
         public string Location { get; set; }
         public TimeOnly Time { get; set; }
-        public enum TypeOfPhotoSession
-        {
-            Family,
-            Birthday,
-            Wedding,
-            Personal
-        }
+        public TypeOfPhotoSession TypeOfPhotoSession{get; set;}
 
         public int ClientId { get; set; }
         public Client? Client { get; set; }
