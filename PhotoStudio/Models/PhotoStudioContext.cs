@@ -20,7 +20,7 @@ namespace PhotoStudio.Models
 
         public PhotoStudioContext()
         {
-           Database.EnsureDeleted();
+           //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

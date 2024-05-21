@@ -26,6 +26,7 @@ namespace PhotoStudio.Windows
 
         List<Client> clients;
         List<Photographer> photographers;
+        List<TypeOfPhotoSession> typeOfPhotoSessions;
 
         public PhotoSession PhotoSession { get; set; }
 
@@ -33,7 +34,6 @@ namespace PhotoStudio.Windows
         {
             InitializeComponent();
             this.Loaded += AddPhotosessionWindow_Loaded;
-            typeComboBox.ItemsSource = Enum.GetValues(typeof(TypeOfPhotoSession));
         }
         public AddPhotosessionWindow(PhotoSession photoSession)
         {
@@ -46,13 +46,15 @@ namespace PhotoStudio.Windows
         {
             db.Clients.Load();
             db.Photographers.Load();
+            db.TypeOfPhotoSessions.Load();
 
             clients = db.Clients.ToList();
             photographers = db.Photographers.ToList();
+            typeOfPhotoSessions = db.TypeOfPhotoSessions.ToList();
 
             clientsComboBox.ItemsSource = clients;
             photographersComboBox.ItemsSource = photographers;
-
+            typeComboBox.ItemsSource = typeOfPhotoSessions;
         }
 
         void Accept_Click(object sender, RoutedEventArgs e)

@@ -7,11 +7,9 @@
         mc:Ignorable="d"
         Title="TypeOfPhotoSessionWindow" Height="450" Width="800">
     <Grid Margin="10">
-        <TextBlock Text="Список клиентов" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+        <TextBlock Text="Список фотосессий" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
         <DockPanel Margin="0 0 0 35" LastChildFill="True" VerticalAlignment="Bottom">
-
             <UniformGrid Columns="3">
-
                 <Button x:Name="AddButton"  Margin="0 0 5 0" Height="30" Content="Добавить" Click="Add_Click" />
                 <Button x:Name="EditButton"  Height="30" Content="Изменить" Click="Edit_Click" />
                 <Button x:Name="DeleteBurron"  Margin="5 0 0 0"  Height="30" Content="Удалить" Click="Delete_Click"  />
@@ -23,10 +21,10 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock FontSize="20" >
-                     <Run Text="Название: " />
-                     <Run Text="{Binding Title}"  />
+                             <Run Text="Название: " />
+                             <Run Text="{Binding Title}"  />
                         </TextBlock>
-                        <CheckBox Content="Видимость:" IsChecked="{Binding Visible}"/>
+                        <CheckBox IsEnabled="False" Content="Видимость" IsChecked="{Binding Visible}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

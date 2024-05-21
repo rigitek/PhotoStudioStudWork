@@ -9,14 +9,31 @@
         Title="MainWindow" Height="300" Width="300">
 
     <Grid>
-        <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Header="Клиенты" Click="Client_Click"/>
+        
+        <UniformGrid Rows="4">
+            <Button x:Name="HumanButton" 
+            FontWeight="Bold"
+            Content="Клиенты"
+            Margin="5"
+            Click="Client_Click"/>
 
+            <Button x:Name="EmployeeButton" 
+            FontWeight="Bold"
+            Content="Фотографы"
+            Margin="5"
+                    Click="Photographer_Click"/>
 
-            <MenuItem Header="Фотографы" Click="Photographer_Click"/>
-            <MenuItem Header="Фотосессии" Click="Photosession_Click"/>
-            <MenuItem Header="Типы фотосессии" Click="TypeOfPhotoSession_Click"/>
+            <Button x:Name="ServiceButton" 
+            FontWeight="Bold"
+            Content="Фотосессии"
+            Margin="5"
+                    Click="Photosession_Click"/>
 
-        </Menu>
+            <Button x:Name="OrderButton" 
+            FontWeight="Bold"
+            Content="Типы фотосессии"
+            Margin="5"
+                    Click="TypeOfPhotoSession_Click"/>
+        </UniformGrid>
     </Grid>
 </Window>

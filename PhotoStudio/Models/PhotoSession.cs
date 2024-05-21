@@ -13,11 +13,13 @@ namespace PhotoStudio.Models
         public double Price { get; set; }
         public string Location { get; set; }
         public TimeOnly Time { get; set; }
-        public TypeOfPhotoSession TypeOfPhotoSession{get; set;}
+        public bool Complete{get; set;}
 
         public int ClientId { get; set; }
         public Client? Client { get; set; }
         public int PhotographerId { get; set; }
         public Photographer? Photographer { get; set; }
+        public int TypeOfPhotoSessionId { get; set;}
+        public TypeOfPhotoSession? TypeOfPhotoSession { get; set; }
     }
 }
