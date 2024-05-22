@@ -9,10 +9,10 @@ namespace PhotoStudio.Models
     public class PhotoSession
     {
         public int Id { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime DateAndTime { get; set; }
         public double Price { get; set; }
         public string Location { get; set; }
-        public TimeOnly Time { get; set; }
+        public string Time { get; set; }
         public bool Complete{get; set;}
 
         public int ClientId { get; set; }

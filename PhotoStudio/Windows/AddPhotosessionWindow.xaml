@@ -9,17 +9,24 @@
     <Grid>
         <TextBlock Text="Новая фотосессия" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"/>
         <StackPanel Margin="10 20 10 10">
-
+           
             <TextBlock>Дата и время</TextBlock>
-            <DatePicker Text="{Binding DateTime}" />
+            <DatePicker x:Name="Date" Text="{Binding DateTime}" />
+            <TextBlock>Час</TextBlock>
+            <TextBox x:Name="Hour" Text="{Binding Hour}"/>
+            <TextBlock>Мин</TextBlock>
+            <TextBox x:Name="Minute" Text="{Binding Minute}" />
+
+
             <TextBlock>Локация</TextBlock>
-            <TextBox Text="{Binding Location}" />
+            <TextBox x:Name="Location" Text="{Binding Location}" />
             <TextBlock>Длительность (часов)</TextBlock>
-            <TextBox Text="{Binding Time}" />
+
+            <TextBox x:Name="Time" Text="{Binding Time}" />
             <TextBlock>Тип фотосессии</TextBlock>
             <ComboBox x:Name="typeComboBox"  SelectedItem="{Binding TypeOfPhotoSession}"/>
             <TextBlock>Стоимость (рублей)</TextBlock>
-            <TextBox Text="{Binding Price}" />
+            <TextBox x:Name="Price" Text="{Binding Price}" />
             <TextBlock>Клиент</TextBlock>
             <ComboBox x:Name="clientsComboBox" SelectedItem="{Binding Client}" />
             <TextBlock>Фотограф</TextBlock>

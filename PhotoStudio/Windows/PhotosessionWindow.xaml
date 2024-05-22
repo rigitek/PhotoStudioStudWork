@@ -22,18 +22,39 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock FontSize="20" >
-                         <Run Text="Имя: " />
-                         <Run Text="{Binding FirstName}"  />
+                        <TextBlock >
+                         <Run Text="Дата и время: " />
+                         <Run Text="{Binding DateAndTime,StringFormat =dd/MM/yyyy hh:MM}"  />
+                            
                         </TextBlock>
-                        <TextBlock FontSize="20">
-                         <Run Text="Фамилия: " />
-                         <Run Text="{Binding LastName}" />
+                        <TextBlock>
+                         <Run Text="Локация: " />
+                         <Run Text="{Binding Location}" />
                         </TextBlock>
-                        <TextBlock FontSize="20">
-                         <Run Text="Номер телефона: " />
-                         <Run Text="{Binding PhoneNumber}" />
+                        <TextBlock>
+                         <Run Text="Длительность: " />
+                         <Run Text="{Binding Time}" />
+                             <Run Text="ч." />
                         </TextBlock>
+                        <TextBlock>
+ <Run Text="Стоимость: " />
+ <Run Text="{Binding Price}" />
+                        </TextBlock>
+                        <TextBlock>
+<Run Text="Клиент: " />
+<Run Text="{Binding Client.FirstName}" />
+                            <Run Text="{Binding Client.LastName}" />
+                        </TextBlock>
+                        <TextBlock>
+<Run Text="Фотограф: " />
+<Run Text="{Binding Photographer.FirstName}" />
+                            <Run Text="{Binding Photographer.LastName}" />
+                        </TextBlock>
+                        <TextBlock>
+<Run Text="Тип фотосессии: " />
+<Run Text="{Binding TypeOfPhotoSession.Title}" />
+                        </TextBlock>
+                        <CheckBox IsEnabled="False" IsChecked="{Binding Complete}" Content="Статус выполнения"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

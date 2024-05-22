@@ -59,7 +59,7 @@ namespace PhotoStudio.Windows
             AddPhotosessionWindow AddPhotosessionWindow = new AddPhotosessionWindow(new PhotoSession
             {
                 Id = photoSession.Id,
-                DateTime = photoSession.DateTime,
+                DateAndTime = photoSession.DateAndTime,
                 Price = photoSession.Price,
                 Location = photoSession.Location,
                 Time = photoSession.Time,
@@ -75,7 +75,7 @@ namespace PhotoStudio.Windows
                 photoSession = db.PhotoSessions.Find(AddPhotosessionWindow.PhotoSession.Id);
                 if (photoSession != null)
                 {
-                    photoSession.DateTime = photoSession.DateTime;
+                    photoSession.DateAndTime = photoSession.DateAndTime;
                     photoSession.Price = photoSession.Price;
                     photoSession.Location = photoSession.Location;
                     photoSession.Time = photoSession.Time;

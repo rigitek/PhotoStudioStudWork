@@ -60,7 +60,46 @@ namespace PhotoStudio.Windows
         void Accept_Click(object sender, RoutedEventArgs e)
         {
 
-            DialogResult = true;
+            if (PhotoSession != null) DialogResult = true;
+            else
+            {
+                Client client = clientsComboBox.SelectedItem as Client;
+                Photographer photographer = photographersComboBox.SelectedItem as Photographer;
+                TypeOfPhotoSession typeOfPhotoSession = typeComboBox.SelectedItem as TypeOfPhotoSession;
+
+                DateTime DatePicker = Date.SelectedDate.Value;
+                DatePicker.AddHours(Convert.ToDouble(Hour.Text));
+                DatePicker.AddMinutes(Convert.ToDouble(Minute.Text));
+              
+
+                if (client == null) return;
+                if (photographer == null) return;
+                if (typeOfPhotoSession == null) return;
+
+
+
+                PhotoSession photoSession = new PhotoSession
+                {
+
+                    DateAndTime = DatePicker,
+
+                    Time = Time.Text,
+                    Location = Location.Text,
+                    Price = Convert.ToDouble(Price.Text),
+                    Complete = false,
+                    Client = client,
+                    Photographer = photographer,
+                    TypeOfPhotoSession = typeOfPhotoSession
+                };
+
+                db.Clients.Attach(client);
+                db.Photographers.Attach(photographer);
+                db.TypeOfPhotoSessions.Attach(typeOfPhotoSession);
+                db.PhotoSessions.Add(photoSession);
+                db.SaveChanges();
+
+                DialogResult = true;
+            }
         }
     }
 }
