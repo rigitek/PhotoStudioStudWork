@@ -20,7 +20,7 @@
                     <StackPanel>
                         <TextBlock >
                          <Run Text="Дата и время: " />
-                         <Run Text="{Binding DateAndTime,StringFormat =dd/MM/yyyy hh:MM}"  />
+                         <Run Text="{Binding DateAndTime,StringFormat =dd/MM/yyyy HH:mm}"  />
                             
                         </TextBlock>
                         <TextBlock>

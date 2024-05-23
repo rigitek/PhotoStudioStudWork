@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using PhotoStudio.Models;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,8 @@ namespace PhotoStudio.Windows
             photographersComboBox.IsEnabled = false;
             typeComboBox.IsEnabled = false;
 
-            Hour.Text = PhotoSession.DateAndTime.Hour.ToString();
+            Hour.Text= PhotoSession.DateAndTime.Hour.ToString();
+         
             Minute.Text = PhotoSession.DateAndTime.Minute.ToString();
 
             DataContext = PhotoSession;
@@ -75,7 +77,19 @@ namespace PhotoStudio.Windows
         void Accept_Click(object sender, RoutedEventArgs e)
         {
 
-            if (PhotoSession != null) DialogResult = true;
+            if (PhotoSession != null)
+            {
+                if(Hour.Text !="" || Minute.Text != "")
+                {
+                    
+                    TimeSpan timeTemp = new TimeSpan(PhotoSession.DateAndTime.Hour, PhotoSession.DateAndTime.Minute, 0);
+                    PhotoSession.DateAndTime = PhotoSession.DateAndTime-timeTemp;
+
+                    TimeSpan timeSpan = new TimeSpan(int.Parse(Hour.Text), int.Parse(Minute.Text), 0);
+                    PhotoSession.DateAndTime= PhotoSession.DateAndTime.Add(timeSpan);
+                }
+                DialogResult = true;
+            }
             else
             {
                 Client client = clientsComboBox.SelectedItem as Client;
@@ -83,24 +97,16 @@ namespace PhotoStudio.Windows
                 TypeOfPhotoSession typeOfPhotoSession = typeComboBox.SelectedItem as TypeOfPhotoSession;
 
                 DateTime DatePicker = Date.SelectedDate.Value;
-                //DatePicker.AddHours(double.Parse(Hour.Text));
-                //DatePicker.AddMinutes(double.Parse(Minute.Text));
-
-                DatePicker.AddHours(3);
-                DatePicker.AddMinutes(5);
-
+                TimeSpan timeSpan = new TimeSpan(int.Parse(Hour.Text), int.Parse(Minute.Text), 0);
+                DatePicker = DatePicker.Add(timeSpan);
 
                 if (client == null) return;
                 if (photographer == null) return;
                 if (typeOfPhotoSession == null) return;
 
-
-
                 PhotoSession photoSession = new PhotoSession
                 {
-
                     DateAndTime = DatePicker,
-
                     Time = Time.Text,
                     Location = Location.Text,
                     Price = Convert.ToDouble(Price.Text),

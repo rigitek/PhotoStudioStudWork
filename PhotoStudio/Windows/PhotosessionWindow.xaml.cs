@@ -60,6 +60,7 @@ namespace PhotoStudio.Windows
             {
                 Id = photoSession.Id,
                 DateAndTime = photoSession.DateAndTime,
+                
                 Price = photoSession.Price,
                 Location = photoSession.Location,
                 Complete=photoSession.Complete,

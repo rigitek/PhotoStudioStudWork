@@ -11,15 +11,15 @@
 
 
             <TextBlock FontSize="14">Дата и время</TextBlock>
-            <DatePicker x:Name="Date" SelectedDate="{Binding DateTime}" />
+            <DatePicker x:Name="Date" SelectedDate="{Binding DateAndTime}" />
             <UniformGrid Columns="4" HorizontalAlignment="Stretch">
 
 
                 <TextBlock FontSize="16" Width="30" HorizontalAlignment="Center">Час:</TextBlock>
-                <TextBox x:Name="Hour" Text="{Binding Hour}"/>
+                <TextBox x:Name="Hour" Text="12" />
                 <TextBlock FontSize="16" HorizontalAlignment="Center" Width="35" ><Run Text="Мин:"/></TextBlock>
-               
-                <TextBox x:Name="Minute" Text="{Binding Minute}" />
+
+                <TextBox x:Name="Minute" Text="30" />
             </UniformGrid>
 
             <TextBlock FontSize="14">Локация</TextBlock>
