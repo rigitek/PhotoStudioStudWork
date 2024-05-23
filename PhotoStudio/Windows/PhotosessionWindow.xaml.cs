@@ -76,14 +76,14 @@ namespace PhotoStudio.Windows
                 photoSession = db.PhotoSessions.Find(AddPhotosessionWindow.PhotoSession.Id);
                 if (photoSession != null)
                 {
-                    photoSession.DateAndTime = photoSession.DateAndTime;
-                    photoSession.Price = photoSession.Price;
-                    photoSession.Location = photoSession.Location;
-                    photoSession.Time = photoSession.Time;
-                    photoSession.Complete=photoSession.Complete;
-                    photoSession.TypeOfPhotoSession = photoSession.TypeOfPhotoSession;
-                    photoSession.Client = photoSession.Client;
-                    photoSession.Photographer = photoSession.Photographer;
+                    photoSession.DateAndTime = AddPhotosessionWindow.PhotoSession.DateAndTime;
+                    photoSession.Price = AddPhotosessionWindow.PhotoSession.Price;
+                    photoSession.Location = AddPhotosessionWindow.PhotoSession.Location;
+                    photoSession.Time = AddPhotosessionWindow.PhotoSession.Time;
+                    photoSession.Complete= AddPhotosessionWindow.PhotoSession.Complete;
+                    photoSession.TypeOfPhotoSession = AddPhotosessionWindow.PhotoSession.TypeOfPhotoSession;
+                    photoSession.Client = AddPhotosessionWindow.PhotoSession.Client;
+                    photoSession.Photographer = AddPhotosessionWindow.PhotoSession.Photographer;
 
                     db.SaveChanges();
                     photosessionsList.Items.Refresh();

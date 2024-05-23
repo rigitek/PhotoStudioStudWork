@@ -34,11 +34,26 @@ namespace PhotoStudio.Windows
         {
             InitializeComponent();
             this.Loaded += AddPhotosessionWindow_Loaded;
+
+            Complete.IsEnabled = false;
         }
         public AddPhotosessionWindow(PhotoSession photoSession)
         {
             InitializeComponent();
+            this.Loaded += AddPhotosessionWindow_Loaded;
             PhotoSession = photoSession;
+
+            clientsComboBox.SelectedIndex = PhotoSession.Client.Id - 1;
+            photographersComboBox.SelectedIndex = PhotoSession.Photographer.Id - 1;
+            typeComboBox.SelectedIndex = PhotoSession.TypeOfPhotoSession.Id - 1;
+
+            clientsComboBox.IsEnabled = false;
+            photographersComboBox.IsEnabled = false;
+            typeComboBox.IsEnabled = false;
+
+            Hour.Text = PhotoSession.DateAndTime.Hour.ToString();
+            Minute.Text = PhotoSession.DateAndTime.Minute.ToString();
+
             DataContext = PhotoSession;
         }
 
@@ -68,9 +83,12 @@ namespace PhotoStudio.Windows
                 TypeOfPhotoSession typeOfPhotoSession = typeComboBox.SelectedItem as TypeOfPhotoSession;
 
                 DateTime DatePicker = Date.SelectedDate.Value;
-                DatePicker.AddHours(Convert.ToDouble(Hour.Text));
-                DatePicker.AddMinutes(Convert.ToDouble(Minute.Text));
-              
+                //DatePicker.AddHours(double.Parse(Hour.Text));
+                //DatePicker.AddMinutes(double.Parse(Minute.Text));
+
+                DatePicker.AddHours(3);
+                DatePicker.AddMinutes(5);
+
 
                 if (client == null) return;
                 if (photographer == null) return;
@@ -101,5 +119,7 @@ namespace PhotoStudio.Windows
                 DialogResult = true;
             }
         }
+
+      
     }
 }

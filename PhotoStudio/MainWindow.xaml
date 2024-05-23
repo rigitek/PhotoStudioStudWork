@@ -6,34 +6,42 @@
         xmlns:local="clr-namespace:PhotoStudio"
         mc:Ignorable="d"
        
-        Title="MainWindow" Height="300" Width="300">
+        Title="Главное меню" Height="300" Width="300" Background="Orange">
 
     <Grid>
-        
-        <UniformGrid Rows="4">
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
             <Button x:Name="HumanButton" 
             FontWeight="Bold"
             Content="Клиенты"
             Margin="5"
+                    FontSize="16"
+                    Height="40"
             Click="Client_Click"/>
 
             <Button x:Name="EmployeeButton" 
             FontWeight="Bold"
             Content="Фотографы"
             Margin="5"
+                    FontSize="16"
+                     Height="40"
                     Click="Photographer_Click"/>
 
             <Button x:Name="ServiceButton" 
             FontWeight="Bold"
             Content="Фотосессии"
             Margin="5"
+                    FontSize="16"
+                     Height="40"
                     Click="Photosession_Click"/>
 
             <Button x:Name="OrderButton" 
             FontWeight="Bold"
-            Content="Типы фотосессии"
+            Content="Типы фотосессий"
+FontSize="16"
             Margin="5"
+                     Height="40"
                     Click="TypeOfPhotoSession_Click"/>
-        </UniformGrid>
+        </StackPanel>
     </Grid>
 </Window>

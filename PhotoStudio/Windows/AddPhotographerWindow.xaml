@@ -5,23 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhotoStudio.Windows"
         mc:Ignorable="d"
-        Title="AddPhotographerWindow" Height="450" Width="400">
+        Title="Новый фотограф" SizeToContent="WidthAndHeight" MinWidth="250" Background="Orange">
     <Grid>
-        <TextBlock Text="Новый фотограф" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"/>
-        <StackPanel Margin="10 20 10 10">
-
-            <TextBlock>Имя</TextBlock>
-            <TextBox Text="{Binding FirstName}" />
-            <TextBlock>Фамилия</TextBlock>
-            <TextBox Text="{Binding LastName}" />
-            <TextBlock>Номер телефона</TextBlock>
-            <TextBox Text="{Binding PhoneNumber}" />
-            <DockPanel Margin="0 10 0 0" LastChildFill="True" VerticalAlignment="Bottom">
+        
+        <StackPanel Margin="10 10 10 10">
+            <UniformGrid Columns="2" >
+                <TextBlock>Имя:</TextBlock>
+                <TextBox Text="{Binding FirstName}" Margin="0 0 0 5"/>
+                <TextBlock>Фамилия:</TextBlock>
+                <TextBox Text="{Binding LastName}" Margin="0 0 0 5"/>
+                <TextBlock>Номер телефона:</TextBlock>
+                <TextBox Text="{Binding PhoneNumber}" Margin="0 0 0 5" />
+            </UniformGrid>
+            
+           
+            <DockPanel LastChildFill="True" VerticalAlignment="Bottom">
 
                 <UniformGrid Rows="2">
 
-                    <Button IsDefault="True" Content="Сохранить" Height="30" Margin="0 0 0 5" Click="Accept_Click"/>
-                    <Button IsCancel="True" Content="Отмена" Height="30"  Margin="0 5 0 0"/>
+                    <Button IsDefault="True" Content="Продолжить" Height="25" Margin="0 0 0 5" Click="Accept_Click" FontSize="14"/>
+                    <Button IsCancel="True" Content="Назад" Height="25"   FontSize="14"/>
                 </UniformGrid>
             </DockPanel>
         </StackPanel>

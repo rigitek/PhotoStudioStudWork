@@ -5,38 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhotoStudio.Windows"
         mc:Ignorable="d"
-        Title="AddPhotosessionWindow" Height="Auto" Width="400">
+        Title="Новая фотосессия" SizeToContent="WidthAndHeight" MinWidth="250" Background="Orange">
     <Grid>
-        <TextBlock Text="Новая фотосессия" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"/>
-        <StackPanel Margin="10 20 10 10">
-           
-            <TextBlock>Дата и время</TextBlock>
-            <DatePicker x:Name="Date" Text="{Binding DateTime}" />
-            <TextBlock>Час</TextBlock>
-            <TextBox x:Name="Hour" Text="{Binding Hour}"/>
-            <TextBlock>Мин</TextBlock>
-            <TextBox x:Name="Minute" Text="{Binding Minute}" />
+        <StackPanel Margin="10 10 10 10">
 
 
-            <TextBlock>Локация</TextBlock>
-            <TextBox x:Name="Location" Text="{Binding Location}" />
-            <TextBlock>Длительность (часов)</TextBlock>
+            <TextBlock FontSize="14">Дата и время</TextBlock>
+            <DatePicker x:Name="Date" SelectedDate="{Binding DateTime}" />
+            <UniformGrid Columns="4" HorizontalAlignment="Stretch">
+
+
+                <TextBlock FontSize="16" Width="30" HorizontalAlignment="Center">Час:</TextBlock>
+                <TextBox x:Name="Hour" Text="{Binding Hour}"/>
+                <TextBlock FontSize="16" HorizontalAlignment="Center" Width="35" ><Run Text="Мин:"/></TextBlock>
+               
+                <TextBox x:Name="Minute" Text="{Binding Minute}" />
+            </UniformGrid>
+
+            <TextBlock FontSize="14">Локация</TextBlock>
+            <TextBox x:Name="Location"  Text="{Binding Location}" />
+            <TextBlock FontSize="14" >Длительность (часов)</TextBlock>
 
             <TextBox x:Name="Time" Text="{Binding Time}" />
-            <TextBlock>Тип фотосессии</TextBlock>
+            <TextBlock FontSize="14">Тип фотосессии</TextBlock>
             <ComboBox x:Name="typeComboBox"  SelectedItem="{Binding TypeOfPhotoSession}"/>
-            <TextBlock>Стоимость (рублей)</TextBlock>
+            <TextBlock FontSize="14">Стоимость (рублей)</TextBlock>
             <TextBox x:Name="Price" Text="{Binding Price}" />
-            <TextBlock>Клиент</TextBlock>
+            <TextBlock FontSize="14">Клиент</TextBlock>
             <ComboBox x:Name="clientsComboBox" SelectedItem="{Binding Client}" />
-            <TextBlock>Фотограф</TextBlock>
+            <TextBlock FontSize="14">Фотограф</TextBlock>
             <ComboBox x:Name="photographersComboBox" SelectedItem="{Binding Photographer}" />
+            <CheckBox x:Name="Complete" Margin="0 5 0 0" IsChecked="{Binding Complete}" Content="Состояние" />
             <DockPanel Margin="0 10 0 0" LastChildFill="True" VerticalAlignment="Bottom">
 
                 <UniformGrid Rows="2">
 
-                    <Button IsDefault="True" Content="Сохранить" Height="30" Margin="0 0 0 5" Click="Accept_Click"/>
-                    <Button IsCancel="True" Content="Отмена" Height="30"  Margin="0 5 0 0"/>
+                    <Button IsDefault="True" Content="Продолжить" Height="25" Margin="0 0 0 5" Click="Accept_Click" FontSize="14"/>
+                    <Button IsCancel="True" Content="Назад" Height="25"   FontSize="14"/>
                 </UniformGrid>
             </DockPanel>
         </StackPanel>
