@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhotoStudio.Windows"
         mc:Ignorable="d"
-        Title="PhotosessionWindow" Height="450" Width="400" Background="Orange">
+        Title="PhotosessionWindow" SizeToContent="WidthAndHeight" MinHeight="300" Background="Orange">
     <Grid Margin="10">
         <Menu FontSize="14">
             <MenuItem x:Name="AddButton" Header="Новая фотосессия" Click="Add_Click"/>
@@ -14,47 +14,21 @@
             <MenuItem Header="Назад" Click="Back_Click"/>
         </Menu>
 
-        <ListBox x:Name="photosessionsList" ItemsSource="{Binding}" Margin="0 25 0 0">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock >
-                         <Run Text="Дата и время: " />
-                         <Run Text="{Binding DateAndTime,StringFormat =dd/MM/yyyy HH:mm}"  />
-                            
-                        </TextBlock>
-                        <TextBlock>
-                         <Run Text="Локация: " />
-                         <Run Text="{Binding Location}" />
-                        </TextBlock>
-                        <TextBlock>
-                         <Run Text="Длительность: " />
-                         <Run Text="{Binding Time}" />
-                             <Run Text="ч." />
-                        </TextBlock>
-                        <TextBlock>
- <Run Text="Стоимость: " />
- <Run Text="{Binding Price}" />
-                        </TextBlock>
-                        <TextBlock>
-<Run Text="Клиент: " />
-<Run Text="{Binding Client.FirstName}" />
-                            <Run Text="{Binding Client.LastName}" />
-                        </TextBlock>
-                        <TextBlock>
-<Run Text="Фотограф: " />
-<Run Text="{Binding Photographer.FirstName}" />
-                            <Run Text="{Binding Photographer.LastName}" />
-                        </TextBlock>
-                        <TextBlock>
-<Run Text="Тип фотосессии: " />
-<Run Text="{Binding TypeOfPhotoSession.Title}" />
-                        </TextBlock>
-                        <CheckBox IsEnabled="False" IsChecked="{Binding Complete}" Content="Статус выполнения"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <DataGrid IsReadOnly="True" x:Name="photosessionsList" AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="0 20 0 0" >
+            <DataGrid.Columns >
+                <DataGridCheckBoxColumn Header="" Binding="{Binding Complete}"/>
+                <DataGridTextColumn Header="Дата и время" Binding="{Binding DateAndTime,StringFormat =dd/MM/yyyy HH:mm}"  />
+                <DataGridTextColumn Header="Локация" Binding="{Binding Location}"/>
+                <DataGridTextColumn Header="Длит." Binding="{Binding Time}"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}"  />
+                <DataGridTextColumn Header="Тип фотосессии" Binding="{Binding TypeOfPhotoSession}"  />
+                <DataGridTextColumn Header="Клиент" Binding="{Binding Client}"  />
+                <DataGridTextColumn Header="Фотограф" Binding="{Binding Photographer}"  />
+            
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        
 
        
 
