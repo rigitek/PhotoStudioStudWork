@@ -21,17 +21,20 @@ namespace PhotoStudio.Windows
     public partial class AddTypeOfPhotoSessionWindow : Window
     {
         public TypeOfPhotoSession TypeOfPhotoSession { get; set; }
+
+        //передача объекта в конструктор
         public AddTypeOfPhotoSessionWindow(TypeOfPhotoSession typeOfPhotoSession)
         {
             InitializeComponent();
 
             TypeOfPhotoSession = typeOfPhotoSession;
+            //контекст данных
             DataContext = TypeOfPhotoSession;
         }
 
         void Accept_Click(object sender, RoutedEventArgs e)
         {
-
+            //если нажали кнопку то вывод тру
             DialogResult = true;
         }
     }

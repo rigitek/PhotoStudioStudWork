@@ -31,30 +31,38 @@ namespace PhotoStudio.Windows
 
         private void PhotographerWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
+            //загруззка данных из бд
             db.Photographers.Load();
+            //передача данных в контекст
             DataContext = db.Photographers.Local.ToObservableCollection();
 
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            //создание обьекта окна добавление с передачей в конструктор нового объекта
             AddPhotographerWindow AddPhotographerWindow = new AddPhotographerWindow(new Photographer());
 
-            //AddHumanWindow.Show();
+            //если при закрытии окна будет тру
             if (AddPhotographerWindow.ShowDialog() == true)
             {
+                //создаем новый объект
                 Photographer Photographer = AddPhotographerWindow.Photographer;
+                //добавляем новй объект в бд
                 db.Photographers.Add(Photographer);
+                //сохраняем его в бд
                 db.SaveChanges();
             }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            //передаем выбранный объект из страницы
             Photographer? photographer = photographersList.SelectedItem as Photographer;
+            //если не выбран то нчиего не происходит
             if (photographer is null) return;
 
+            //создаем объект окна и передаем данные выбранного объекта
             AddPhotographerWindow AddPhotographerWindow = new AddPhotographerWindow(new Photographer
             {
                 Id = photographer.Id,
@@ -63,17 +71,21 @@ namespace PhotoStudio.Windows
                 PhoneNumber = photographer.PhoneNumber
             });
 
-
+            //если при закрытии будет тру
             if (AddPhotographerWindow.ShowDialog() == true)
             {
-                // получаем измененный объект
+                // получаем измененный объект и находим его в бд
                 photographer = db.Photographers.Find(AddPhotographerWindow.Photographer.Id);
+                //если нашли
                 if (photographer != null)
                 {
+                    //присваиваем новые свойства 
                     photographer.FirstName = AddPhotographerWindow.Photographer.FirstName;
                     photographer.LastName = AddPhotographerWindow.Photographer.LastName;
                     photographer.PhoneNumber = AddPhotographerWindow.Photographer.PhoneNumber;
+                    //сохраняем изменения
                     db.SaveChanges();
+                    //обновляем список
                     photographersList.Items.Refresh();
                 }
             }
@@ -85,7 +97,9 @@ namespace PhotoStudio.Windows
             Photographer? photographer = photographersList.SelectedItem as Photographer;
             // если ни одного объекта не выделено, выходим
             if (photographer is null) return;
+            //если выделено то удаялем
             db.Photographers.Remove(photographer);
+            //сохраняем изменения
             db.SaveChanges();
         }
 

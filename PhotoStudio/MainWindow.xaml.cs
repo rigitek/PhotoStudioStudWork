@@ -22,6 +22,7 @@ namespace PhotoStudio
             InitializeComponent();
         }
 
+        //открытие меню клиентов
         private void Client_Click(object sender, RoutedEventArgs e)
         {
             ClientWindow clientWindow = new ClientWindow();
@@ -30,7 +31,7 @@ namespace PhotoStudio
         }
 
 
-
+        //открытие меню фотографов
         private void Photographer_Click(object sender, RoutedEventArgs e)
         {
             PhotographerWindow photographerWindow = new PhotographerWindow();
@@ -38,6 +39,7 @@ namespace PhotoStudio
             photographerWindow.Show();
         }
 
+        //открытие меню фотосессий
         private void Photosession_Click(object sender, RoutedEventArgs e)
         {
             PhotosessionWindow photosessionWindow = new PhotosessionWindow();
@@ -45,8 +47,8 @@ namespace PhotoStudio
             photosessionWindow.Show();
         }
 
-       
-            private void TypeOfPhotoSession_Click(object sender, RoutedEventArgs e)
+        //открытие меню типа фотосессий
+        private void TypeOfPhotoSession_Click(object sender, RoutedEventArgs e)
         {
             TypeOfPhotoSessionWindow typeOfPhotoSessionWindow = new TypeOfPhotoSessionWindow();
             this.Close();

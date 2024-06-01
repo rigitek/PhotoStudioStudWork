@@ -30,30 +30,37 @@ namespace PhotoStudio.Windows
 
         private void TypeOfPhotoSessionWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
+            //загруззка данных из бд
             db.TypeOfPhotoSessions.Load();
+            //передача данных в контекст
             DataContext = db.TypeOfPhotoSessions.Local.ToObservableCollection();
-
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            //создание обьекта окна добавление с передачей в конструктор нового объекта
             AddTypeOfPhotoSessionWindow AddTypeOfPhotoSessionWindow = new AddTypeOfPhotoSessionWindow(new TypeOfPhotoSession());
 
-            //AddHumanWindow.Show();
+            //если при закрытии окна будет тру
             if (AddTypeOfPhotoSessionWindow.ShowDialog() == true)
             {
+                //создаем новый объект
                 TypeOfPhotoSession TypeOfPhotoSession = AddTypeOfPhotoSessionWindow.TypeOfPhotoSession;
+                //добавляем новй объект в бд
                 db.TypeOfPhotoSessions.Add(TypeOfPhotoSession);
+                //сохраняем его в бд
                 db.SaveChanges();
             }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            //передаем выбранный объект из страницы
             TypeOfPhotoSession? typeOfPhotoSession = typeOfPhotoSessionsList.SelectedItem as TypeOfPhotoSession;
+            //если не выбран то нчиего не происходит
             if (typeOfPhotoSession is null) return;
 
+            //создаем объект окна и передаем данные выбранного объекта
             AddTypeOfPhotoSessionWindow AddTypeOfPhotoSessionWindow = new AddTypeOfPhotoSessionWindow(new TypeOfPhotoSession
             {
                 Id = typeOfPhotoSession.Id,
@@ -62,15 +69,20 @@ namespace PhotoStudio.Windows
             });
 
 
+            //если при закрытии будет тру
             if (AddTypeOfPhotoSessionWindow.ShowDialog() == true)
             {
-                // получаем измененный объект
+                // получаем измененный объект и находим его в бд
                 typeOfPhotoSession = db.TypeOfPhotoSessions.Find(AddTypeOfPhotoSessionWindow.TypeOfPhotoSession.Id);
+                //если нашли
                 if (typeOfPhotoSession != null)
                 {
+                    //присваиваем новые свойства 
                     typeOfPhotoSession.Title = AddTypeOfPhotoSessionWindow.TypeOfPhotoSession.Title;
                     typeOfPhotoSession.Visible = AddTypeOfPhotoSessionWindow.TypeOfPhotoSession.Visible;
+                    //сохраняем изменения
                     db.SaveChanges();
+                    //обновляем список
                     typeOfPhotoSessionsList.Items.Refresh();
                 }
             }
@@ -83,6 +95,7 @@ namespace PhotoStudio.Windows
             // если ни одного объекта не выделено, выходим
             if (typeOfPhotoSession is null) return;
             db.TypeOfPhotoSessions.Remove(typeOfPhotoSession);
+            //сохранение
             db.SaveChanges();
         }
 

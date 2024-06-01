@@ -31,13 +31,14 @@ namespace PhotoStudio.Windows
 
         private void PhotosessionWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            //загруззка данных из бд
             db.Clients.Load();
             db.Photographers.Load();
             db.PhotoSessions.Load();
             db.TypeOfPhotoSessions.Load();
-            DataContext = db.PhotoSessions.Local.ToObservableCollection();
 
-            
+            //передача данных в контекст
+            DataContext = db.PhotoSessions.Local.ToObservableCollection();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -45,17 +46,19 @@ namespace PhotoStudio.Windows
             AddPhotosessionWindow AddPhotosessionWindow = new AddPhotosessionWindow();
             if (AddPhotosessionWindow.ShowDialog() == true)
             {
+                //загруззка данных из бд
                 db.PhotoSessions.Load();
-
-
             }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            //передаем выбранный объект из страницы
             PhotoSession? photoSession = photosessionsList.SelectedItem as PhotoSession;
+            //если не выбран то нчиего не происходит
             if (photoSession is null) return;
 
+            //создаем объект окна и передаем данные выбранного объекта
             AddPhotosessionWindow AddPhotosessionWindow = new AddPhotosessionWindow(new PhotoSession
             {
                 Id = photoSession.Id,
@@ -70,13 +73,15 @@ namespace PhotoStudio.Windows
                 Photographer = photoSession.Photographer
             });
 
-
+            //если при закрытии будет тру
             if (AddPhotosessionWindow.ShowDialog() == true)
             {
                 // получаем измененный объект
                 photoSession = db.PhotoSessions.Find(AddPhotosessionWindow.PhotoSession.Id);
+                //если нашли
                 if (photoSession != null)
                 {
+                    //присваиваем новые свойства 
                     photoSession.DateAndTime = AddPhotosessionWindow.PhotoSession.DateAndTime;
                     photoSession.Price = AddPhotosessionWindow.PhotoSession.Price;
                     photoSession.Location = AddPhotosessionWindow.PhotoSession.Location;
@@ -86,11 +91,11 @@ namespace PhotoStudio.Windows
                     photoSession.Client = AddPhotosessionWindow.PhotoSession.Client;
                     photoSession.Photographer = AddPhotosessionWindow.PhotoSession.Photographer;
 
+                    //сохраняем изменения
                     db.SaveChanges();
+                    //обновляем список
                     photosessionsList.Items.Refresh();
-
                 }
-
             }
         }
 
@@ -100,7 +105,9 @@ namespace PhotoStudio.Windows
             PhotoSession? photoSession = photosessionsList.SelectedItem as PhotoSession;
             // если ни одного объекта не выделено, выходим
             if (photoSession is null) return;
+            //если выделено то удаялем
             db.PhotoSessions.Remove(photoSession);
+            //сохраняем изменения
             db.SaveChanges();
         }
 
