@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhotoStudio.Windows"
         mc:Ignorable="d"
-        Title="PhotographerWindow" Height="450" Width="500" Background="Orange">
+        Title="PhotographerWindow" Height="450" Width="500">
+
+    <Window.Background>
+        <ImageBrush ImageSource="../Background.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+
     <Grid Margin="10">
         <Menu FontSize="14">
             <MenuItem x:Name="AddButton" Header="Новый фотограф" Click="Add_Click"/>
